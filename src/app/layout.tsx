@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Montserrat, Playfair_Display } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -8,27 +8,35 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+// Same display face the app and the App Store artwork use.
+const montserratAlt = Montserrat_Alternates({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "GiftSwap - Social Gift Exchange App | Coming Soon",
-  description: "The ultimate app for managing gift exchanges, wishlists, and social events. Create wishlists, organize events, and share the joy of giving with friends and family.",
-  keywords: ["gift exchange", "wishlist", "social app", "gift registry", "events", "birthday gifts", "giftswap"],
-  authors: [{ name: "GiftSwap Team" }],
+  metadataBase: new URL("https://giftswap.store"),
+  title: "GiftSwap: Secret Santa, wishlists and group gifting",
+  description:
+    "Draw names in one tap, share wishlists people actually shop from, and claim gifts secretly so nobody buys the same thing twice.",
+  keywords: ["secret santa", "gift exchange", "wishlist", "gift registry", "birthday gifts", "giftswap"],
+  authors: [{ name: "GiftSwap" }],
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
   },
   openGraph: {
-    title: "GiftSwap - Social Gift Exchange App",
-    description: "Create wishlists, organize gift exchanges, and share the joy of giving.",
+    title: "GiftSwap: gifting, minus the chaos",
+    description: "Secret Santa draws, shareable wishlists and secret gift claiming in one app.",
     type: "website",
-    images: ["/icon.png"],
+    url: "https://giftswap.store",
+    images: ["/screens/secret-santa.webp"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#095F8A",
 };
 
 export default function RootLayout({
@@ -38,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${montserrat.variable} ${playfair.variable} antialiased`}>
+      <body className={`${montserrat.variable} ${montserratAlt.variable} antialiased`}>
         {children}
       </body>
     </html>
