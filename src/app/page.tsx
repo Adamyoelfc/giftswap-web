@@ -5,6 +5,12 @@ import { LandingNav } from "@/components/LandingNav";
 import { Reveal } from "@/components/Reveal";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
+// Set this to the App Store link once Apple approves the app
+// (https://apps.apple.com/app/id6819495934). While it is empty the page
+// shows "Coming soon" and the waitlist form.
+const APP_STORE_URL = "";
+const LIVE = APP_STORE_URL !== "";
+
 const occasions = [
   "Secret Santa",
   "Birthdays",
@@ -21,7 +27,7 @@ const features = [
   {
     eyebrow: "Secret Santa",
     title: "Draw names in one tap",
-    body: "Invite everyone with a link or a 6-character code. When the group is in, draw names and each person privately sees who they're buying for. No hats, no group texts, no peeking.",
+    body: "Invite everyone by @username, a link or a 6-digit code. When the group is in, draw names and each person privately sees who they're buying for. No hats, no group texts, no peeking.",
     points: ["Join with a link or a code", "Private assignments", "Budgets and dates in one place"],
     screen: "/screens/secret-santa.webp",
     alt: "GiftSwap event screen showing a Secret Santa assignment",
@@ -46,10 +52,10 @@ const features = [
     tint: "from-[#EAFBF4] to-white",
   },
   {
-    eyebrow: "Event chat",
+    eyebrow: "Chat",
     title: "Plan together, spoil nothing",
-    body: "Every event gets its own group chat for logistics, photos and the occasional ugly-sweater debate, without dragging the birthday person into the thread.",
-    points: ["A chat per event", "Share photos", "Notifications when it matters"],
+    body: "Every event gets its own group chat for logistics and the occasional ugly-sweater debate. After the draw, ask the person you're gifting about sizes or colors in an anonymous chat, without giving yourself away.",
+    points: ["A chat per event", "Anonymous chat with your match", "Report and block built in"],
     screen: "/screens/chat.webp",
     alt: "GiftSwap event chat with messages about the gift exchange",
     tint: "from-[#FFF1EE] to-white",
@@ -64,7 +70,9 @@ const steps = [
 
 const faqs = [
   { q: "Is GiftSwap free?", a: "Yes. GiftSwap is free to use, with no ads. Some product links are affiliate links, which is how we keep it free." },
-  { q: "When can I download it?", a: "GiftSwap is in testing on iPhone now and coming to the App Store soon. Leave your email above and we'll let you know the moment it's ready." },
+  LIVE
+    ? { q: "Where can I download it?", a: "GiftSwap is free on the App Store for iPhone and iPad. Android is on the way." }
+    : { q: "When can I download it?", a: "GiftSwap is in testing on iPhone now and coming to the App Store soon. Leave your email above and we'll let you know the moment it's ready." },
   { q: "Will the birthday person see what I claimed?", a: "No. Claims are hidden from the wishlist owner. Other guests only see that an item is taken, so nobody buys it twice." },
   { q: "What occasions does it work for?", a: "Secret Santa and gift exchanges, birthdays, weddings, baby showers and holidays. Pick the kind of event and GiftSwap sets up who gives to whom." },
 ];
@@ -82,7 +90,7 @@ export default function Home() {
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/12 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] ring-1 ring-white/20">
               <span className="h-1.5 w-1.5 rounded-full bg-coral" />
-              Coming soon to iPhone
+              {LIVE ? "Now on the App Store" : "Coming soon to iPhone"}
             </span>
             <h1 className="mt-6 font-display font-extrabold text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.2rem]">
               Gifting,
@@ -93,7 +101,7 @@ export default function Home() {
               gifts secretly so nobody buys the same thing twice.
             </p>
             <div className="mt-9 flex justify-center lg:justify-start">
-              <WaitlistForm source="landing-hero" id="join" />
+              {LIVE ? <AppStoreBadge /> : <WaitlistForm source="landing-hero" id="join" />}
             </div>
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start text-sm text-white/75">
               {["Free to use", "No ads", "Surprises stay secret"].map((t) => (
@@ -258,11 +266,19 @@ export default function Home() {
             <span className="block text-gold">hold the hat.</span>
           </h2>
           <p className="mt-5 text-lg text-white/80 max-w-xl mx-auto">
-            GiftSwap is coming to the App Store. Leave your email and be first in line.
+            {LIVE
+              ? "GiftSwap is free on the App Store. Start your first exchange tonight."
+              : "GiftSwap is coming to the App Store. Leave your email and be first in line."}
           </p>
           <div className="mt-9 flex flex-col items-center gap-6">
-            <WaitlistForm source="landing-cta" />
-            <AppStoreSoon />
+            {LIVE ? (
+              <AppStoreBadge />
+            ) : (
+              <>
+                <WaitlistForm source="landing-cta" />
+                <AppStoreSoon />
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -296,6 +312,29 @@ function Check({ className = "" }: { className?: string }) {
     <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M20 6 9 17l-5-5" />
     </svg>
+  );
+}
+
+function AppleLogo() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+    </svg>
+  );
+}
+
+function AppStoreBadge() {
+  return (
+    <a
+      href={APP_STORE_URL}
+      className="inline-flex items-center gap-3 rounded-2xl bg-black px-6 py-3.5 text-white ring-1 ring-white/20 transition hover:bg-black/80"
+    >
+      <AppleLogo />
+      <span className="text-left leading-tight">
+        <span className="block text-[11px] text-white/75">Download on the</span>
+        <span className="block text-base font-semibold">App Store</span>
+      </span>
+    </a>
   );
 }
 

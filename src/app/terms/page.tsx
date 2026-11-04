@@ -17,7 +17,7 @@ export default function Terms() {
   return (
     <LegalPage
       title="Terms of Use"
-      updated="October 11, 2026"
+      updated="November 4, 2026"
       intro="The short version: be kind, only post what you have the right to share, and keep the surprises secret. The full terms are below."
     >
       <p>
@@ -47,7 +47,8 @@ export default function Terms() {
       <h2>3. What GiftSwap does</h2>
       <p>
         GiftSwap helps you organize gift exchanges and celebrations: create events, invite people,
-        draw names, share wishlists, claim gifts and chat with the group. GiftSwap does not sell
+        draw names, share wishlists, claim gifts, chat with the group and
+        chat anonymously with the person you are gifting. GiftSwap does not sell
         products, take payments or ship gifts. Purchases you make happen in third-party stores
         (see section 7). Name draws are random, and we cannot guarantee that every participant
         will take part, buy a gift or keep the surprise.
@@ -89,8 +90,8 @@ export default function Terms() {
 
       <h2>6. Reporting, blocking and enforcement</h2>
       <p>
-        You can report content or a user with the reporting tools in the app or by emailing {mail}.
-        You can block a user to stop seeing their content and messages. We review reports within
+        You can report a message or a user in the app (long-press the message and choose Report)
+        or by emailing {mail}. You can block a user the same way to stop seeing their messages. We review reports within
         24 hours and may remove content, restrict features or suspend or terminate accounts that
         break these Terms, with or without notice. We may also report illegal content to the
         authorities.
@@ -99,7 +100,7 @@ export default function Terms() {
       <h2>7. Stores, affiliate links and other third parties</h2>
       <p>
         Wishlists and gift suggestions can link to products in third-party stores such as
-        Amazon, Walmart, eBay and others. <strong>Some of these are affiliate links: if you buy
+        Amazon and others. Store links open in your browser or the store&apos;s own app. <strong>Some of these are affiliate links: if you buy
         through them, GiftSwap may earn a commission at no extra cost to you.</strong> Prices,
         availability, shipping, returns and the products themselves are the responsibility of each
         store, under its own terms and privacy policy. We are not responsible for third-party
@@ -108,7 +109,8 @@ export default function Terms() {
 
       <h2>8. AI features</h2>
       <p>
-        Features such as &ldquo;Write a card with AI&rdquo; and gift suggestions are generated
+        Features such as &ldquo;Write a card with AI&rdquo;, gift suggestions and automatic item
+        categories are generated
         automatically and may be inaccurate or unsuitable. Review anything generated before you
         use or send it. You are responsible for the messages you send.
       </p>
@@ -123,8 +125,8 @@ export default function Terms() {
 
       <h2>10. Ending your account</h2>
       <p>
-        You can stop using GiftSwap at any time and delete your account from the app&apos;s
-        settings or by emailing {mail}. When you delete your account we delete or anonymize your
+        You can stop using GiftSwap at any time and delete your account in the app (Profile, Account
+        settings, Delete account) or by emailing {mail}. When you delete your account we delete or anonymize your
         personal information as described in the <Link href="/privacy/">Privacy Policy</Link>. We
         may suspend or end your access if you break these Terms or if we stop offering the
         Service. Sections 4 (for content already shared), 7, 11, 12 and 14 survive termination.

@@ -9,31 +9,39 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "How do I start a Secret Santa?",
-    a: "Tap Create, choose a gift exchange, set the date and budget, then invite people by email or share the join code. When everyone is in, tap Draw names — each person privately sees who they are buying for.",
+    a: "Tap Create, choose a gift exchange, set the date and budget, then invite people by @username or a share link. When everyone is in, tap Draw names. Each person privately sees who they are buying for, nobody gets themselves, and repeat events avoid last year's pairs.",
   },
   {
     q: "How do I join an event someone shared with me?",
-    a: "Open the invite link on your iPhone, or go to Home → Join and enter the 6-character code from the organizer.",
+    a: "Open the invite link on your iPhone, accept the invitation on your Home screen, or go to Events → Join and enter the 6-digit code from the organizer.",
+  },
+  {
+    q: "Can I ask the person I'm buying for a question without giving myself away?",
+    a: "Yes. After names are drawn, open the event and use the secret chat with the person you're gifting. They see your messages as coming from \"Your Secret Santa\", never your name.",
   },
   {
     q: "Will the person I'm buying for see that I claimed their gift?",
     a: "No. Claims are hidden from the wishlist owner so the surprise stays a surprise. Other guests can see an item is taken, so nobody buys it twice.",
   },
   {
+    q: "Can I share my wishlist with someone who doesn't have the app?",
+    a: "Yes. Open your wishlist, tap Share and turn on the web link. Anyone with the link can see the list in their browser and claim a gift with their name and email. You can turn the link off at any time.",
+  },
+  {
     q: "Can I make a wishlist for my kid or a baby on the way?",
-    a: "Yes. Add a child from your profile, or create a baby shower event — the wishlist lives on your account and you manage it.",
+    a: "Yes. Add a child from your profile, or create a baby shower event. The wishlist lives on your account and you manage it.",
   },
   {
     q: "I didn't get my verification or reset code.",
     a: "Check your spam or promotions folder, wait a minute and request a new code. Still nothing? Email us and we'll sort it out.",
   },
   {
-    q: "How do I report abusive content or a user?",
-    a: `Email ${SUPPORT_EMAIL} with the event name, the person's name or @handle and a screenshot if you can. We review every report within 24 hours and remove content or accounts that break our Terms of Use.`,
+    q: "How do I report or block someone?",
+    a: `In any chat, long-press the message and choose Report or Block. Blocked people can't message you, and you can unblock them later from your profile. You can also email ${SUPPORT_EMAIL} with the event name, the person's @username and a screenshot. We review every report within 24 hours and remove content or accounts that break our Terms of Use.`,
   },
   {
     q: "How do I delete my account?",
-    a: `Email ${SUPPORT_EMAIL} from the address on your account and we'll permanently delete your account and data within 30 days.`,
+    a: `In the app, go to Profile → Account settings → Delete account (at the bottom of the screen). It happens right away and can't be undone. Can't get into the app? Email ${SUPPORT_EMAIL} from the address on your account and we'll delete it for you.`,
   },
 ];
 
