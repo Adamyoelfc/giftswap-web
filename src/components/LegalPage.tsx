@@ -20,6 +20,7 @@ export function LegalPage({
         <div className="max-w-3xl mx-auto px-5 md:px-8 py-5 flex items-center justify-between">
           <Logo />
           <nav className="flex gap-5 text-sm font-medium text-white/80" aria-label="Pages">
+            <Link href="/gift-ideas/" className="hover:text-white">Gift ideas</Link>
             <Link href="/support/" className="hover:text-white">Support</Link>
             <Link href="/terms/" className="hover:text-white">Terms</Link>
             <Link href="/privacy/" className="hover:text-white">Privacy</Link>

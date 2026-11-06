@@ -46,6 +46,7 @@ export function SiteFooter() {
         <nav aria-label="Help" className="text-sm">
           <p className="font-semibold text-white">Help</p>
           <ul className="mt-3 space-y-2">
+            <li><Link href="/gift-ideas/" className="hover:text-white">Gift ideas</Link></li>
             <li><Link href="/support/" className="hover:text-white">Support &amp; FAQ</Link></li>
             <li><a href={`mailto:${SUPPORT_EMAIL}`} className="hover:text-white">{SUPPORT_EMAIL}</a></li>
           </ul>
@@ -56,7 +57,7 @@ export function SiteFooter() {
           <span>© {new Date().getFullYear()} GiftSwap. All rights reserved.</span>
           <span className="md:max-w-xl md:text-right">
             Some product links in GiftSwap are affiliate links. If you buy through them we may earn a
-            commission, at no extra cost to you.
+            commission, at no extra cost to you. As an Amazon Associate I earn from qualifying purchases.
           </span>
         </div>
       </div>
