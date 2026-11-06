@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: "GiftSwap" }],
   icons: {
     icon: "/icon.png",
-    apple: "/icon.png",
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "GiftSwap: gifting, minus the chaos",
