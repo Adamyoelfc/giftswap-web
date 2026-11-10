@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "How do I join an event someone shared with me?",
-    a: "Open the invite link on your iPhone, accept the invitation on your Home screen, or go to Events → Join and enter the 6-digit code from the organizer.",
+    a: "Open the invite link on your iPhone or in your browser, accept the invitation on your Home screen, or go to Events → Join and enter the 6-digit code from the organizer.",
   },
   {
     q: "Can I ask the person I'm buying for a question without giving myself away?",
@@ -30,6 +30,10 @@ const faqs = [
   {
     q: "Can I make a wishlist for my kid or a baby on the way?",
     a: "Yes. Add a child from your profile, or create a baby shower event. The wishlist lives on your account and you manage it.",
+  },
+  {
+    q: "Can I use GiftSwap on my computer?",
+    a: "Yes. Go to app.giftswap.store in any browser and sign in with the same account you use in the app. Everything stays in sync. Push notifications are only on the phone app for now.",
   },
   {
     q: "I didn't get my verification or reset code.",
@@ -55,7 +59,7 @@ export default function Support() {
           <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-blue-primary underline underline-offset-4">
             {SUPPORT_EMAIL}
           </a>
-          . We usually reply within one business day. Include your iPhone model and what you were
+          . We usually reply within one business day. Include your iPhone model (or browser, if you use the web app) and what you were
           doing when the problem happened — screenshots help a lot.
         </p>
       </div>

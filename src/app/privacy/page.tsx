@@ -10,7 +10,7 @@ const mail = <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>;
 
 export default function Privacy() {
   return (
-    <LegalPage title="Privacy Policy" updated="November 4, 2026">
+    <LegalPage title="Privacy Policy" updated="November 10, 2026">
       <p>
         GiftSwap helps friends and families organize gift exchanges, share wishlists and
         celebrate together. This policy explains what we collect when you use the GiftSwap
@@ -36,6 +36,7 @@ export default function Privacy() {
       <ul>
         <li><strong>Push token</strong>: if you allow notifications, a device token so we can send you event, chat and wishlist updates.</li>
         <li><strong>Store link clicks</strong>: when you open a product in a store from GiftSwap, we record that click (product, store, time, IP address and user-agent) on our own servers so we can attribute affiliate commissions. This is not shared with ad networks.</li>
+        <li><strong>Web app storage</strong>: if you use GiftSwap at app.giftswap.store, your browser keeps your sign-in and settings (such as dark mode) in its local storage so you stay signed in. It is not used for tracking. Signing out removes your sign-in, and clearing your browser data removes the rest.</li>
         <li><strong>Server logs</strong>: standard request logs (IP address, time, errors) kept for a short time for security and debugging.</li>
       </ul>
       <p>

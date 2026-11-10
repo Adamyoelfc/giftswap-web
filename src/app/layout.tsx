@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://giftswap.store"),
   title: "GiftSwap: Secret Santa, wishlists and group gifting",
   description:
-    "Draw names in one tap, share wishlists people actually shop from, and claim gifts secretly so nobody buys the same thing twice.",
+    "Draw names in one tap, share wishlists people actually shop from, and claim gifts secretly so nobody buys the same thing twice. On iPhone and the web.",
   keywords: ["secret santa", "gift exchange", "wishlist", "gift registry", "birthday gifts", "giftswap"],
   authors: [{ name: "GiftSwap" }],
   icons: {

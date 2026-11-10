@@ -46,6 +46,7 @@ export function SiteFooter() {
         <nav aria-label="Help" className="text-sm">
           <p className="font-semibold text-white">Help</p>
           <ul className="mt-3 space-y-2">
+            <li><a href="https://app.giftswap.store" className="hover:text-white">Web app</a></li>
             <li><Link href="/gift-ideas/" className="hover:text-white">Gift ideas</Link></li>
             <li><Link href="/support/" className="hover:text-white">Support &amp; FAQ</Link></li>
             <li><a href={`mailto:${SUPPORT_EMAIL}`} className="hover:text-white">{SUPPORT_EMAIL}</a></li>

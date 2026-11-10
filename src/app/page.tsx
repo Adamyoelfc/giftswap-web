@@ -11,6 +11,9 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 const APP_STORE_URL = "";
 const LIVE = APP_STORE_URL !== "";
 
+// The full app, in any browser (same account as the iPhone app).
+const WEB_APP_URL = "https://app.giftswap.store";
+
 const occasions = [
   "Secret Santa",
   "Birthdays",
@@ -69,10 +72,11 @@ const steps = [
 ];
 
 const faqs = [
+  { q: "Can I use GiftSwap on my computer?", a: "Yes. Open app.giftswap.store in any browser on your Mac, PC or tablet and sign in with the same account you use on your phone. Your events, wishlists and chats are the same everywhere, and there is nothing to install." },
   { q: "Is GiftSwap free?", a: "Yes. GiftSwap is free to use, with no ads. Some product links are affiliate links, which is how we keep it free." },
   LIVE
-    ? { q: "Where can I download it?", a: "GiftSwap is free on the App Store for iPhone and iPad. Android is on the way." }
-    : { q: "When can I download it?", a: "GiftSwap is in testing on iPhone now and coming to the App Store soon. Leave your email above and we'll let you know the moment it's ready." },
+    ? { q: "Where can I get it?", a: "GiftSwap is free on the App Store for iPhone and iPad, and on the web at app.giftswap.store. Android is on the way." }
+    : { q: "When can I download it?", a: "You can use GiftSwap on the web today at app.giftswap.store. The iPhone app is coming to the App Store soon: leave your email above and we'll let you know the moment it's ready. Android is on the way." },
   { q: "Will the birthday person see what I claimed?", a: "No. Claims are hidden from the wishlist owner. Other guests only see that an item is taken, so nobody buys it twice." },
   { q: "What occasions does it work for?", a: "Secret Santa and gift exchanges, birthdays, weddings, baby showers and holidays. Pick the kind of event and GiftSwap sets up who gives to whom." },
 ];
@@ -90,7 +94,7 @@ export default function Home() {
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/12 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] ring-1 ring-white/20">
               <span className="h-1.5 w-1.5 rounded-full bg-coral" />
-              {LIVE ? "Now on the App Store" : "Coming soon to iPhone"}
+              {LIVE ? "On the App Store and the web" : "Now on the web · iPhone soon"}
             </span>
             <h1 className="mt-6 font-display font-extrabold text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.2rem]">
               Gifting,
@@ -100,11 +104,25 @@ export default function Home() {
               Draw names for Secret Santa, share wishlists people actually shop from, and claim
               gifts secretly so nobody buys the same thing twice.
             </p>
-            <div className="mt-9 flex justify-center lg:justify-start">
-              {LIVE ? <AppStoreBadge /> : <WaitlistForm source="landing-hero" id="join" />}
+            <div className="mt-9 flex flex-col items-center gap-4 lg:items-start">
+              {LIVE ? (
+                <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
+                  <AppStoreBadge />
+                  <WebAppButton />
+                </div>
+              ) : (
+                <>
+                  <WaitlistForm source="landing-hero" id="join" />
+                  <a href={WEB_APP_URL} className="group inline-flex items-center gap-2 text-sm font-semibold text-white/90 hover:text-white">
+                    <Globe />
+                    Or use it on the web today
+                    <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+                  </a>
+                </>
+              )}
             </div>
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start text-sm text-white/75">
-              {["Free to use", "No ads", "Surprises stay secret"].map((t) => (
+              {["Free to use", "No ads", "iPhone and web"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <Check className="text-gold" />
                   {t}
@@ -183,6 +201,51 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* On the web */}
+      <section id="web" className="scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-blue-pale to-white py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-5 md:px-8">
+          <div className="text-center max-w-2xl mx-auto reveal">
+            <Eyebrow>Also on the web</Eyebrow>
+            <h2 className="mt-4 font-display font-bold text-3xl sm:text-5xl text-navy leading-tight">
+              Plan from your phone or your laptop.
+            </h2>
+            <p className="mt-5 text-lg text-gray-dark">
+              GiftSwap works in any browser too. Sign in at{" "}
+              <a href={WEB_APP_URL} className="font-semibold text-blue-primary underline underline-offset-4">app.giftswap.store</a>{" "}
+              with the same account and pick up right where you left off. Great for building a long
+              wishlist with a keyboard, or for the cousin who doesn&apos;t have an iPhone.
+            </p>
+          </div>
+
+          <div className="mt-12 md:mt-16 reveal">
+            <BrowserFrame src="/screens/web-event.webp" alt="GiftSwap in a desktop browser, showing a Secret Santa event with the participants beside it" />
+          </div>
+
+          <ul className="mt-12 grid gap-4 sm:grid-cols-3 reveal">
+            {[
+              { t: "Same account everywhere", b: "Events, wishlists and chats stay in sync between the app and the web." },
+              { t: "Nothing to install", b: "Works on Mac, Windows, Chromebook and tablets. Just open the link." },
+              { t: "Shop in another tab", b: "Open a store, copy the product link and paste it straight into your list." },
+            ].map((x) => (
+              <li key={x.t} className="rounded-3xl bg-white p-6 shadow-[0_1px_0_rgba(6,47,71,0.06),0_20px_40px_-28px_rgba(6,47,71,0.35)]">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-pale text-blue-primary">
+                  <Check />
+                </span>
+                <h3 className="mt-4 font-display text-lg font-bold text-navy">{x.t}</h3>
+                <p className="mt-1.5 leading-relaxed text-gray-dark">{x.b}</p>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-10 flex justify-center reveal">
+            <a href={WEB_APP_URL} className="inline-flex items-center gap-2 rounded-full bg-blue-dark px-7 py-3.5 font-semibold text-white transition hover:bg-navy">
+              <Globe />
+              Open GiftSwap on the web
+            </a>
           </div>
         </div>
       </section>
@@ -267,16 +330,22 @@ export default function Home() {
           </h2>
           <p className="mt-5 text-lg text-white/80 max-w-xl mx-auto">
             {LIVE
-              ? "GiftSwap is free on the App Store. Start your first exchange tonight."
-              : "GiftSwap is coming to the App Store. Leave your email and be first in line."}
+              ? "GiftSwap is free on the App Store and the web. Start your first exchange tonight."
+              : "Start on the web today, and leave your email to hear the moment the iPhone app is on the App Store."}
           </p>
           <div className="mt-9 flex flex-col items-center gap-6">
             {LIVE ? (
-              <AppStoreBadge />
+              <div className="flex flex-wrap justify-center gap-3">
+                <AppStoreBadge />
+                <WebAppButton />
+              </div>
             ) : (
               <>
                 <WaitlistForm source="landing-cta" />
-                <AppStoreSoon />
+                <div className="flex flex-wrap justify-center gap-3">
+                  <AppStoreSoon />
+                  <WebAppButton />
+                </div>
               </>
             )}
           </div>
@@ -295,6 +364,54 @@ function Phone({ src, alt, priority = false }: { src: string; alt: string; prior
         <Image src={src} alt={alt} width={600} height={1202} priority={priority} className="h-full w-full object-cover object-top" />
       </div>
     </div>
+  );
+}
+
+function BrowserFrame({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-white ring-1 ring-navy/10 shadow-[0_40px_80px_-30px_rgba(6,47,71,0.45),0_18px_36px_-18px_rgba(6,47,71,0.25)]">
+      <div className="flex items-center gap-3 border-b border-gray-light bg-[#F3F5F7] px-4 py-2.5">
+        <span className="flex gap-1.5" aria-hidden="true">
+          <span className="h-3 w-3 rounded-full bg-[#FF5F57]" />
+          <span className="h-3 w-3 rounded-full bg-[#FEBC2E]" />
+          <span className="h-3 w-3 rounded-full bg-[#28C840]" />
+        </span>
+        <span className="mx-auto flex min-w-0 max-w-sm flex-1 items-center justify-center gap-1.5 truncate rounded-md bg-white px-3 py-1 text-xs text-gray-dark ring-1 ring-navy/5">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <rect x="4" y="11" width="16" height="10" rx="2" />
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+          </svg>
+          app.giftswap.store
+        </span>
+        <span className="w-[54px]" aria-hidden="true" />
+      </div>
+      <Image src={src} alt={alt} width={1600} height={1000} className="block h-auto w-full" />
+    </div>
+  );
+}
+
+function Globe() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
+
+function WebAppButton() {
+  return (
+    <a
+      href={WEB_APP_URL}
+      className="inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-blue-dark ring-1 ring-white/20 transition hover:bg-cream"
+    >
+      <Globe />
+      <span className="text-left leading-tight">
+        <span className="block text-[10px] uppercase tracking-wider text-gray-dark">Use it in your</span>
+        <span className="block text-sm font-semibold">Web browser</span>
+      </span>
+    </a>
   );
 }
 

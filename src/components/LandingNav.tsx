@@ -5,6 +5,7 @@ import { GiftMark } from "./Brand";
 
 const links = [
   { href: "#features", label: "Features" },
+  { href: "#web", label: "Web" },
   { href: "#how-it-works", label: "How it works" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -53,6 +54,14 @@ export function LandingNav() {
               {l.label}
             </a>
           ))}
+          <a
+            href="https://app.giftswap.store"
+            className={`text-sm font-semibold transition-colors ${
+              solid ? "text-blue-primary hover:text-blue-dark" : "text-white hover:text-white/80"
+            }`}
+          >
+            Sign in
+          </a>
           <a
             href="#join"
             className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
@@ -107,6 +116,13 @@ export function LandingNav() {
             className="mt-6 rounded-full bg-blue-dark px-6 py-4 text-center font-semibold text-white"
           >
             Get early access
+          </a>
+          <a
+            href="https://app.giftswap.store"
+            onClick={() => setOpen(false)}
+            className="rounded-full bg-blue-pale px-6 py-4 text-center font-semibold text-blue-dark"
+          >
+            Open the web app
           </a>
         </nav>
       </div>
