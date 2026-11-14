@@ -28,7 +28,7 @@ export default function Privacy() {
         <li><strong>Wishlists</strong>: the items you save, with their links, prices, notes and priority, and the gifts you claim on other people&apos;s lists.</li>
         <li><strong>Messages</strong>: what you post in an event chat, and in the anonymous chat between a Secret Santa giver and their recipient, including replies and reactions.</li>
         <li><strong>Reports and blocks</strong>: when you report a message or block someone, we keep the report (the message, who sent it and your reason) and your block list.</li>
-        <li><strong>Website forms</strong>: if you join the waitlist on giftswap.store, your email address. If someone opens a wishlist web link and claims a gift without an account, the name and email they enter.</li>
+        <li><strong>Website forms</strong>: if someone opens a wishlist web link and claims a gift without an account, the name and email they enter.</li>
         <li><strong>Support</strong>: anything you send us when you contact support.</li>
       </ul>
 

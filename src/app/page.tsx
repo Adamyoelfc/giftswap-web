@@ -3,13 +3,8 @@ import Link from "next/link";
 import { SUPPORT_EMAIL, SiteFooter } from "@/components/Brand";
 import { LandingNav } from "@/components/LandingNav";
 import { Reveal } from "@/components/Reveal";
-import { WaitlistForm } from "@/components/WaitlistForm";
 
-// Set this to the App Store link once Apple approves the app
-// (https://apps.apple.com/app/id6819495934). While it is empty the page
-// shows "Coming soon" and the waitlist form.
-const APP_STORE_URL = "";
-const LIVE = APP_STORE_URL !== "";
+const APP_STORE_URL = "https://apps.apple.com/us/app/giftswap-wishlists-gifting/id6819495934";
 
 // The full app, in any browser (same account as the iPhone app).
 const WEB_APP_URL = "https://app.giftswap.store";
@@ -74,9 +69,7 @@ const steps = [
 const faqs = [
   { q: "Can I use GiftSwap on my computer?", a: "Yes. Open app.giftswap.store in any browser on your Mac, PC or tablet and sign in with the same account you use on your phone. Your events, wishlists and chats are the same everywhere, and there is nothing to install." },
   { q: "Is GiftSwap free?", a: "Yes. GiftSwap is free to use, with no ads. Some product links are affiliate links, which is how we keep it free." },
-  LIVE
-    ? { q: "Where can I get it?", a: "GiftSwap is free on the App Store for iPhone and iPad, and on the web at app.giftswap.store. Android is on the way." }
-    : { q: "When can I download it?", a: "You can use GiftSwap on the web today at app.giftswap.store. The iPhone app is coming to the App Store soon: leave your email above and we'll let you know the moment it's ready. Android is on the way." },
+  { q: "Where can I get it?", a: "GiftSwap is free on the App Store for iPhone and iPad, and on the web at app.giftswap.store. Android is on the way." },
   { q: "Will the birthday person see what I claimed?", a: "No. Claims are hidden from the wishlist owner. Other guests only see that an item is taken, so nobody buys it twice." },
   { q: "What occasions does it work for?", a: "Secret Santa and gift exchanges, birthdays, weddings, baby showers and holidays. Pick the kind of event and GiftSwap sets up who gives to whom." },
 ];
@@ -94,7 +87,7 @@ export default function Home() {
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/12 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] ring-1 ring-white/20">
               <span className="h-1.5 w-1.5 rounded-full bg-coral" />
-              {LIVE ? "On the App Store and the web" : "Now on the web · iPhone soon"}
+              Now on the App Store and the web
             </span>
             <h1 className="mt-6 font-display font-extrabold text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.2rem]">
               Gifting,
@@ -105,21 +98,10 @@ export default function Home() {
               gifts secretly so nobody buys the same thing twice.
             </p>
             <div className="mt-9 flex flex-col items-center gap-4 lg:items-start">
-              {LIVE ? (
-                <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
-                  <AppStoreBadge />
-                  <WebAppButton />
-                </div>
-              ) : (
-                <>
-                  <WaitlistForm source="landing-hero" id="join" />
-                  <a href={WEB_APP_URL} className="group inline-flex items-center gap-2 text-sm font-semibold text-white/90 hover:text-white">
-                    <Globe />
-                    Or use it on the web today
-                    <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </a>
-                </>
-              )}
+              <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
+                <AppStoreBadge />
+                <WebAppButton />
+              </div>
             </div>
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start text-sm text-white/75">
               {["Free to use", "No ads", "iPhone and web"].map((t) => (
@@ -329,25 +311,13 @@ export default function Home() {
             <span className="block text-gold">hold the hat.</span>
           </h2>
           <p className="mt-5 text-lg text-white/80 max-w-xl mx-auto">
-            {LIVE
-              ? "GiftSwap is free on the App Store and the web. Start your first exchange tonight."
-              : "Start on the web today, and leave your email to hear the moment the iPhone app is on the App Store."}
+            GiftSwap is free on the App Store and the web. Start your first exchange tonight.
           </p>
           <div className="mt-9 flex flex-col items-center gap-6">
-            {LIVE ? (
-              <div className="flex flex-wrap justify-center gap-3">
-                <AppStoreBadge />
-                <WebAppButton />
-              </div>
-            ) : (
-              <>
-                <WaitlistForm source="landing-cta" />
-                <div className="flex flex-wrap justify-center gap-3">
-                  <AppStoreSoon />
-                  <WebAppButton />
-                </div>
-              </>
-            )}
+            <div className="flex flex-wrap justify-center gap-3">
+              <AppStoreBadge />
+              <WebAppButton />
+            </div>
           </div>
         </div>
       </section>
@@ -452,20 +422,6 @@ function AppStoreBadge() {
         <span className="block text-base font-semibold">App Store</span>
       </span>
     </a>
-  );
-}
-
-function AppStoreSoon() {
-  return (
-    <span className="inline-flex items-center gap-3 rounded-2xl bg-black/25 px-5 py-3 ring-1 ring-white/20" aria-label="Coming soon to the App Store">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-      </svg>
-      <span className="text-left leading-tight">
-        <span className="block text-[10px] uppercase tracking-wider text-white/70">Coming soon to the</span>
-        <span className="block text-sm font-semibold">App Store</span>
-      </span>
-    </span>
   );
 }
 

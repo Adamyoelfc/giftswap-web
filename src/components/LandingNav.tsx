@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { GiftMark } from "./Brand";
 
+const APP_STORE_URL = "https://apps.apple.com/us/app/giftswap-wishlists-gifting/id6819495934";
+
 const links = [
   { href: "#features", label: "Features" },
   { href: "#web", label: "Web" },
@@ -63,12 +65,12 @@ export function LandingNav() {
             Sign in
           </a>
           <a
-            href="#join"
+            href={APP_STORE_URL}
             className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
               solid ? "bg-blue-dark text-white hover:bg-navy" : "bg-white text-blue-dark hover:bg-cream"
             }`}
           >
-            Get early access
+            Download the app
           </a>
         </nav>
 
@@ -111,11 +113,11 @@ export function LandingNav() {
             </a>
           ))}
           <a
-            href="#join"
+            href={APP_STORE_URL}
             onClick={() => setOpen(false)}
             className="mt-6 rounded-full bg-blue-dark px-6 py-4 text-center font-semibold text-white"
           >
-            Get early access
+            Download on the App Store
           </a>
           <a
             href="https://app.giftswap.store"
